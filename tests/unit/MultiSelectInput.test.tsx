@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { MultiSelectInput } from "./MultiSelectInput";
+import { MultiSelectInput } from "../../src/components/MultiSelectInput";
 
 describe("MultiSelectInput", () => {
   it("renders selected options", () => {

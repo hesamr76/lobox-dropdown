@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
-import { SelectedOptions } from "./SelectedOptions";
+import { SelectedOptions } from "../../src/components/SelectedOptions";
 
 describe("SelectedOptions", () => {
   it("renders no options when selected is empty", () => {

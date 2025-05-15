@@ -1,17 +1,21 @@
 import { useState } from "react";
 
-import type { MultiDropDownSelectProps } from "../../types";
-import { useOutsideClick, useIsOpen } from "../../hooks";
+import type { MultiDropDownSelectProps } from "./types";
+import { useOutsideClick, useIsOpen } from "../hooks";
 
-import { MultiSelectInput, DropDown } from "./partials";
+import { MultiSelectInput } from "./MultiSelectInput";
+import { DropDown } from "./DropDown";
 
-import styles from "./MultiDropDownSelect.module.scss";
+import styles from "../App.module.scss";
 
 export const MultiDropDownSelect = ({
   options: initialOptions,
+  selected: initialSelected = [],
+  setSelected: setSelectedIds,
+  ...inputProps
 }: MultiDropDownSelectProps) => {
   const [options, setOptions] = useState(initialOptions);
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selected, setSelected] = useState<string[]>(initialSelected);
 
   const { isOpen, onOpen, onClose } = useIsOpen();
   const ref = useOutsideClick(onClose);
@@ -23,20 +27,31 @@ export const MultiDropDownSelect = ({
       setOptions((prev) => [...prev, newOption]);
     }
 
-    setSelected((prev) => [...prev, optionValue]);
+    if (!selected.includes(optionValue)) {
+      setSelected((prev) => {
+        const next = [...prev, optionValue];
+        setSelectedIds?.(next);
+        return next;
+      });
+    }
   };
 
   const onSelect = (value: string) => {
+    let newSelected = [];
     if (selected.includes(value)) {
-      setSelected((prev) => prev.filter((option) => option !== value));
+      newSelected = selected.filter((option) => option !== value);
     } else {
-      setSelected((prev) => [...prev, value]);
+      newSelected = [...selected, value];
     }
+
+    setSelected(newSelected);
+    setSelectedIds?.(newSelected);
   };
 
   return (
     <div ref={ref} className={styles.MultiDropDownSelect}>
       <MultiSelectInput
+        {...inputProps}
         selected={selected}
         onOpen={onOpen}
         onCreate={onCreate}

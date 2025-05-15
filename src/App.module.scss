@@ -2,15 +2,102 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100dvh;
+    background-color: #fafafa;
+  
+    font-family: system-ui;
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  min-height: 100dvh;
-  background-color: #fafafa;
+    .MultiDropDownSelect {
+      position: relative;
+      color: #757575;  
 
-  font-family: system-ui;
+      .dropdown {
+        background-color: white;
+        border-radius: 16px;
+        border: 1px solid lightgray;
+        padding: 8px;
+
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        right: 0;
+
+        transform: translateY(100%);
+
+        gap: 4px;
+        display: flex;
+        flex-direction: column;
+
+        max-height: 275px;
+        overflow-y: auto;
+
+        .dropdownOption {
+          cursor: pointer;
+          padding: 8px;
+          border-radius: 8px;
+          font-weight: 400;
+
+          display: flex;
+          align-items: center;
+          justify-content: space-between
+        }
+
+        .dropdownOption.selected {
+          color: #697ec7;
+          background-color: #f3f4ff;
+          font-weight: 500;
+        }
+
+        .dropdownOption:hover {
+          background-color: #f3f4ff;
+        }
+      }
+
+      .inputContainer {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
+
+        width: 300px;
+        min-height: 30px;
+        padding: 4px 8px ;
+        border-radius: 8px;
+        border: 1px solid lightgray;
+
+        .selectedOption {
+          border-radius: 4px;
+          padding: 4px;
+          color: #697ec7;
+          background-color: #f3f4ff;
+        }
+        
+        input {
+          flex: 1;
+          min-width: 150px;
+          color: #757575;
+          font-size: 16px;
+          border: unset;
+          background-color: transparent;
+        }
+      }
+
+      .inputContainer:focus-within {
+        border-color: #697ec7;
+        box-shadow: 0 0 4px #697ec7;
+        
+        input:focus-visible {
+          outline: none;
+          box-shadow: none;
+          border: unset;
+        }
+      }
+    }
+  }
 }

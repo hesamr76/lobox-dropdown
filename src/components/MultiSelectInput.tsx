@@ -4,14 +4,16 @@ import {
   type ChangeEventHandler,
   type KeyboardEventHandler,
 } from "react";
-import type { MultiSelectInputProps } from "../../../../types";
-import styles from "./MultiSelectInput.module.scss";
+import type { MultiSelectInputProps } from "./types";
+import styles from "../App.module.scss";
+
 import { SelectedOptions } from "./SelectedOptions";
 
 export const MultiSelectInput = ({
   onCreate,
   onOpen,
   selected,
+  placeholder = "Type To Add More",
   ...inputProps
 }: MultiSelectInputProps) => {
   const ref = useRef<HTMLInputElement>(null);
@@ -43,8 +45,8 @@ export const MultiSelectInput = ({
 
       <input
         {...inputProps}
+        placeholder={placeholder}
         ref={ref}
-        placeholder="Type To Add More"
         value={value}
         onChange={onChange}
         onKeyDown={onKeyDown}

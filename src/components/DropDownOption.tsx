@@ -1,4 +1,4 @@
-import styles from "./DropDown.module.scss";
+import styles from "../App.module.scss";
 
 export const DropDownOption = ({
   isSelected,

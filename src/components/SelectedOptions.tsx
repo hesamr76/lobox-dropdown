@@ -1,5 +1,5 @@
-import type { SelectedOptionsProps } from "../../../../types";
-import styles from "./MultiSelectInput.module.scss";
+import type { SelectedOptionsProps } from "./types";
+import styles from "../App.module.scss";
 
 export const SelectedOptions = ({ selected }: SelectedOptionsProps) => {
   return (

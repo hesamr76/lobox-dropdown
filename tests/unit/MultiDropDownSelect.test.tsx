@@ -1,10 +1,10 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach } from "vitest";
-import { MultiDropDownSelect } from "./MultiDropDownSelect";
+import { MultiDropDownSelect } from "../../src/components/MultiDropDownSelect";
 
-vi.mock("../../hooks", async () => {
-  const actual = await vi.importActual<typeof import("../../hooks")>(
-    "../../hooks"
+vi.mock("../../src/hooks", async () => {
+  const actual = await vi.importActual<typeof import("../../src/hooks")>(
+    "../../src/hooks"
   );
   return {
     ...actual,

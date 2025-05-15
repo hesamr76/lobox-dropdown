@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { DropDownOption } from "./DropDownOption";
-import styles from "./DropDown.module.scss";
+import { DropDownOption } from "../../src/components/DropDownOption";
+import styles from "../../src/App.module.scss";
 
 describe("DropDownOption", () => {
   it("renders the label correctly", () => {

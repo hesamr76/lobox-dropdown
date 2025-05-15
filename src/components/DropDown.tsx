@@ -1,7 +1,7 @@
-import type { DropDownProps } from "../../../../types";
+import type { DropDownProps } from "./types";
 
 import { DropDownOption } from "./DropDownOption";
-import styles from "./DropDown.module.scss";
+import styles from "../App.module.scss";
 
 export const DropDown = ({ options, selected, onSelect }: DropDownProps) => {
   return (

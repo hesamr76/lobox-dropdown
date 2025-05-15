@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { DropDown } from "./DropDown";
+import { DropDown } from "../../src/components/DropDown";
 
 const mockOptions = [
   { label: "Education 🎓", value: "education" },
