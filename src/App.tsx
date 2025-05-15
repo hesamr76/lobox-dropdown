@@ -1,4 +1,4 @@
-import { MultiSelectInput } from "./components/MultiSelectInput";
+import { MultiDropDownSelect } from "./components/MultiDropDownSelect";
 import styles from "./App.module.scss";
 
 const options = [
@@ -13,8 +13,8 @@ const options = [
 function App() {
   return (
     <div className={styles.container}>
-      <h1>Multi Select Dropdown</h1>
-      <MultiSelectInput options={options} />
+      <h1>Multi drop-down select component</h1>
+      <MultiDropDownSelect options={options} />
     </div>
   );
 }
