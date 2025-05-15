@@ -4,11 +4,16 @@
 
 ### React + TypeScript + Vite
 
-
 **Install dependencies**
 
 ```bash
 $ pnpm install
+```
+
+**Run Tests**
+
+```bash
+$ npx vitest run
 ```
 
 **Start Dev Server**
