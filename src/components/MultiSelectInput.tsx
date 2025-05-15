@@ -4,6 +4,7 @@ import {
   type KeyboardEventHandler,
 } from "react";
 import type { MultiSelectInputProps } from "./types";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 export const MultiSelectInput = ({
   options,
@@ -14,9 +15,19 @@ export const MultiSelectInput = ({
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const [inputValue, setInputValue] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
-  const onChange: ChangeEventHandler<HTMLInputElement> = (e) =>
+  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setInputValue(e.target.value);
+  };
+
+  const closeDropDown = () => {
+    setIsOpen(false);
+  };
+
+  const openDropDown = () => {
+    setIsOpen(true);
+  };
 
   const onKeyDown: KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key !== "Enter" || !inputValue.trim()) {
@@ -44,23 +55,27 @@ export const MultiSelectInput = ({
     }
   };
 
+  const ref = useOutsideClick(closeDropDown);
+
   return (
-    <div>
+    <div ref={ref}>
       <input
         {...inputProps}
         value={inputValue}
         onChange={onChange}
         onKeyDown={onKeyDown}
+        onFocus={openDropDown}
       />
 
-      {[...dropDownOptions].map((option) => (
-        <DropDownOption
-          key={option.value}
-          isSelected={selectedOptions.includes(option.value)}
-          label={option.label}
-          onClick={() => toggleSelectedOption(option.value)}
-        />
-      ))}
+      {isOpen &&
+        [...dropDownOptions].map((option) => (
+          <DropDownOption
+            key={option.value}
+            isSelected={selectedOptions.includes(option.value)}
+            label={option.label}
+            onClick={() => toggleSelectedOption(option.value)}
+          />
+        ))}
     </div>
   );
 };
