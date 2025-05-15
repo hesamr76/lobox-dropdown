@@ -1,4 +1,4 @@
-import { MultiDropDownSelect } from "./components/MultiDropDownSelect";
+import { MultiDropDownSelect } from "./components/MultiDropDownSelect/MultiDropDownSelect";
 import styles from "./App.module.scss";
 
 const options = [

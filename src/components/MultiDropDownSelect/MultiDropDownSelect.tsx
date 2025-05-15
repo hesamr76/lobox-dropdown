@@ -1,10 +1,11 @@
 import { useState } from "react";
-import type { MultiDropDownSelectProps } from "./types";
-import { useOutsideClick } from "../hooks/useOutsideClick";
-import { MultiSelectInput } from "./MultiSelectInput";
 
-import { DropDown } from "./DropDown";
-import { useIsOpen } from "../hooks/useIsOpen";
+import type { MultiDropDownSelectProps } from "../../types";
+import { useOutsideClick, useIsOpen } from "../../hooks";
+
+import { MultiSelectInput, DropDown } from "./partials";
+
+import styles from "./MultiDropDownSelect.module.scss";
 
 export const MultiDropDownSelect = ({
   options: initialOptions,
@@ -34,8 +35,12 @@ export const MultiDropDownSelect = ({
   };
 
   return (
-    <div ref={ref}>
-      <MultiSelectInput onOpen={onOpen} onCreate={onCreate} />
+    <div ref={ref} className={styles.MultiDropDownSelect}>
+      <MultiSelectInput
+        selected={selected}
+        onOpen={onOpen}
+        onCreate={onCreate}
+      />
 
       {isOpen && (
         <DropDown options={options} selected={selected} onSelect={onSelect} />

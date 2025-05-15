@@ -1,16 +1,23 @@
 import {
+  useRef,
   useState,
   type ChangeEventHandler,
   type KeyboardEventHandler,
 } from "react";
-import type { MultiSelectInputProps } from "./types";
+import type { MultiSelectInputProps } from "../../../../types";
+import styles from "./MultiSelectInput.module.scss";
+import { SelectedOptions } from "./SelectedOptions";
 
 export const MultiSelectInput = ({
   onCreate,
   onOpen,
+  selected,
   ...inputProps
 }: MultiSelectInputProps) => {
+  const ref = useRef<HTMLInputElement>(null);
   const [value, setValue] = useState("");
+
+  const onClick = () => ref.current?.focus();
 
   const onFocus = onOpen;
 
@@ -31,12 +38,18 @@ export const MultiSelectInput = ({
   };
 
   return (
-    <input
-      {...inputProps}
-      value={value}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-      onFocus={onFocus}
-    />
+    <div className={styles.inputContainer} onClick={onClick}>
+      <SelectedOptions selected={selected} />
+
+      <input
+        {...inputProps}
+        ref={ref}
+        placeholder="Type To Add More"
+        value={value}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        onFocus={onFocus}
+      />
+    </div>
   );
 };

@@ -1,8 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: 100dvh;
-  background-color: white;
+  background-color: #fafafa;
+
+  font-family: system-ui;
 }
