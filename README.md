@@ -4,6 +4,9 @@
 
 ### React + TypeScript + Vite
 
+![screenshot](public/screen.png)
+
+
 **Install dependencies**
 
 ```bash
