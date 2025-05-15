@@ -11,9 +11,14 @@ export type DropDownProps = {
   onSelect: (optionValue: string) => void;
 };
 
-export type MultiSelectInputProps = InputHTMLAttributes<HTMLInputElement> & {
-  onOpen: () => void;
-  onCreate: (value: string) => void;
+export type SelectedOptionsProps = {
+  selected: string[];
 };
+
+export type MultiSelectInputProps = InputHTMLAttributes<HTMLInputElement> &
+  SelectedOptionsProps & {
+    onOpen: () => void;
+    onCreate: (value: string) => void;
+  };
 
 export type MultiDropDownSelectProps = { options: DropDownProps["options"] };
