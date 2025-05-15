@@ -13,7 +13,7 @@ $ pnpm install
 **Run Unit Tests**
 
 ```bash
-$ npx vitest run
+$ pnpm test
 ```
 
 **Start Dev Server**
@@ -25,5 +25,5 @@ $ pnpm dev
 **Run E2E Tests**
 
 ```bash
-$ npx playwright test
+$ pnpm e2e
 ```

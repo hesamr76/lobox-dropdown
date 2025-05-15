@@ -1,4 +1,4 @@
-import("./e2e/register.ts");
+import("./e2e/register");
 
 import { defineConfig } from "@playwright/test";
 
