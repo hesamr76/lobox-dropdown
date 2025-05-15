@@ -10,7 +10,7 @@
 $ pnpm install
 ```
 
-**Run Tests**
+**Run Unit Tests**
 
 ```bash
 $ npx vitest run
@@ -20,4 +20,10 @@ $ npx vitest run
 
 ```bash
 $ pnpm dev
+```
+
+**Run E2E Tests**
+
+```bash
+$ npx playwright test
 ```
